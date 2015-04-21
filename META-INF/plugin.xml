@@ -2,7 +2,7 @@
   <id>com.ldriscoll.slf4jlogformat.intention.plugin</id>
   <name>Slf4j log format converter</name>
   <version>1.0</version>
-  <vendor email="luke@lukedriscoll.com" url="https://github.com/ldriscoll">Luke Driscoll</vendor>
+  <vendor email="luke@lukedriscoll.com" url="https://github.com/ldriscoll/Slf4jLogFormatIntentions">Luke Driscoll</vendor>
 
   <description><![CDATA[
       Adds an intention to allow the conversion of '+' into Logger.info formats with '{}'.

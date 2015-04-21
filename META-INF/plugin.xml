@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.ldriscoll.slf4jlogformat.intention.plugin</id>
   <name>Slf4j log format converter</name>
-  <version>1.0</version>
+  <version>1.1</version>
   <vendor email="luke@lukedriscoll.com" url="https://github.com/ldriscoll/Slf4jLogFormatIntentions">Luke Driscoll</vendor>
 
   <description><![CDATA[
@@ -9,7 +9,10 @@
     ]]></description>
 
   <change-notes><![CDATA[
-      Initial version
+      <ul>
+        <li> 2015-04-21: 1.1 Fixed bug where ' -> ''
+        <li> 2015-04-20: 1.0 Initial version
+      </ul>
     ]]>
   </change-notes>
 

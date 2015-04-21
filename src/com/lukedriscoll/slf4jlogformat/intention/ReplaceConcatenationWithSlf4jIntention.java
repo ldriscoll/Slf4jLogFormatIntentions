@@ -32,7 +32,7 @@ public class ReplaceConcatenationWithSlf4jIntention extends Intention {
     final StringBuilder formatStringBuilder = new StringBuilder();
     final List<PsiExpression> formatParameters = new ArrayList();
     PsiConcatenationUtil.buildFormatString(methodCallExpression.getArgumentList().getExpressions()[0], formatStringBuilder, formatParameters, false);
-    String formatString = formatStringBuilder.toString().replaceAll("\\{\\d+\\}", "{}");
+    String formatString = formatStringBuilder.toString().replaceAll("\\{\\d+\\}", "{}").replaceAll("''", "'");
     StringBuilder builder = new StringBuilder();
     final PsiExpression qualifier = methodExpression.getQualifierExpression();
     if (qualifier != null) {

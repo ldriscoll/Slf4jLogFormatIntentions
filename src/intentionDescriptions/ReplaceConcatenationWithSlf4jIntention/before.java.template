@@ -1,0 +1,5 @@
+public class X {
+  void p(String s, String t) {
+    org.slf4j.Logger.info(<spot>"s: " + s + " t: " + t</spot>);
+  }
+}

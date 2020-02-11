@@ -1,5 +1,13 @@
 package com.lukedriscoll.slf4jlogformat.intention;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.jetbrains.annotations.Nls;
+import org.jetbrains.annotations.NotNull;
+import org.jf.util.StringUtils;
+import org.slf4j.Logger;
+
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiExpression;
@@ -13,12 +21,6 @@ import com.lukedriscoll.slf4jlogformat.Slf4jLogFormatBundle;
 import com.siyeh.ig.PsiReplacementUtil;
 import com.siyeh.ipp.base.Intention;
 import com.siyeh.ipp.base.PsiElementPredicate;
-import org.jetbrains.annotations.Nls;
-import org.jetbrains.annotations.NotNull;
-import org.slf4j.Logger;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ReplaceConcatenationWithSlf4jIntention extends Intention {
 
@@ -29,10 +31,15 @@ public class ReplaceConcatenationWithSlf4jIntention extends Intention {
     PsiMethodCallExpression methodCallExpression = (PsiMethodCallExpression) psiElement;
     final PsiReferenceExpression methodExpression = methodCallExpression.getMethodExpression();
 
-    final StringBuilder formatStringBuilder = new StringBuilder();
     final List<PsiExpression> formatParameters = new ArrayList();
-    PsiConcatenationUtil.buildFormatString(methodCallExpression.getArgumentList().getExpressions()[0], formatStringBuilder, formatParameters, false);
-    String formatString = formatStringBuilder.toString().replaceAll("\\{\\d+\\}", "{}").replaceAll("''", "'");
+    String formatString = PsiConcatenationUtil.buildUnescapedFormatString(
+            methodCallExpression.getArgumentList().getExpressions()[0],
+            false,
+            formatParameters);
+    formatString = StringUtils.escapeString(formatString);
+    formatString = formatString.replaceAll("\\{\\d+\\}", "{}");
+    formatString = formatString.replaceAll("''", "'");
+
     StringBuilder builder = new StringBuilder();
     final PsiExpression qualifier = methodExpression.getQualifierExpression();
     if (qualifier != null) {
@@ -55,7 +62,6 @@ public class ReplaceConcatenationWithSlf4jIntention extends Intention {
     System.out.println("Builder is " + builder);
     PsiReplacementUtil.replaceExpression(methodCallExpression, builder.toString());
   }
-
 
   @NotNull
   @Override

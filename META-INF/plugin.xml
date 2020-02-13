@@ -1,7 +1,7 @@
 <idea-plugin version="2">
   <id>com.ldriscoll.slf4jlogformat.intention.plugin</id>
   <name>Slf4j log format converter</name>
-  <version>1.1</version>
+  <version>1.1.1</version>
   <vendor email="luke@lukedriscoll.com" url="https://github.com/ldriscoll/Slf4jLogFormatIntentions">Luke Driscoll</vendor>
 
   <description><![CDATA[
@@ -10,6 +10,7 @@
 
   <change-notes><![CDATA[
       <ul>
+        <li> 2020-02-12: Changing build version support
         <li> 2015-04-21: 1.1 Fixed bug where ' -> ''
         <li> 2015-04-20: 1.0 Initial version
       </ul>
@@ -17,7 +18,7 @@
   </change-notes>
 
   <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-  <idea-version since-build="131"/>
+  <idea-version since-build="131" until-build="192.*"/>
 
   <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
        on how to target different products -->

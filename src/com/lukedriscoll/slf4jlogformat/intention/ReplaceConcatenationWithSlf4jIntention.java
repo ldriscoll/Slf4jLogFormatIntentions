@@ -3,9 +3,9 @@ package com.lukedriscoll.slf4jlogformat.intention;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.lang.StringEscapeUtils;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
-import org.jf.util.StringUtils;
 import org.slf4j.Logger;
 
 import com.intellij.psi.PsiClass;
@@ -36,7 +36,7 @@ public class ReplaceConcatenationWithSlf4jIntention extends Intention {
             methodCallExpression.getArgumentList().getExpressions()[0],
             false,
             formatParameters);
-    formatString = StringUtils.escapeString(formatString);
+    formatString = StringEscapeUtils.escapeJava(formatString);
     formatString = formatString.replaceAll("\\{\\d+\\}", "{}");
     formatString = formatString.replaceAll("''", "'");
 

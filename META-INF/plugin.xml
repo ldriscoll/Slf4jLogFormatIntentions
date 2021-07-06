@@ -1,7 +1,7 @@
-<idea-plugin>
+<idea-plugin require-restart="false">
   <id>com.ldriscoll.slf4jlogformat.intention.plugin</id>
   <name>Slf4j log format converter</name>
-  <version>1.2</version>
+  <version>1.3</version>
   <vendor email="luke@lukedriscoll.com" url="https://github.com/ldriscoll/Slf4jLogFormatIntentions">Luke Driscoll</vendor>
 
   <description><![CDATA[
@@ -10,6 +10,7 @@
 
   <change-notes><![CDATA[
       <ul>
+        <li> 2021-07-06: 1.3 Cleanup bad code use, limit to older version, as jetbrains now supports this natively.
         <li> 2020-02-11: 1.2 Removed deprecated code use.
         <li> 2015-04-21: 1.1 Fixed bug where ' -> ''
         <li> 2015-04-20: 1.0 Initial version
@@ -18,7 +19,7 @@
   </change-notes>
 
   <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
-  <idea-version since-build="193"/>
+  <idea-version since-build="193" until-build="203.*"/>
 
   <!-- please see https://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
        on how to target different products -->
